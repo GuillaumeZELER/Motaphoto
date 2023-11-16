@@ -9,102 +9,179 @@ Tags: photo
 
 /* Styles CSS du thème commencent ici */
 
-body{
+body {
     margin: 0;
+    font-family: "Space Mono" ;
 }
 
-header{
-    display : flex;
-    justify-content : space-between;
+h2 {
+    font-size: 20px;
+}
+
+/* --- header--- */
+header {
+    display: flex;
+    justify-content: space-between;
     align-items: center;
+    font-family: "Space Mono" ;
+    font-weight : 400;
+    font-size : 16px;
 }
 
-header img{
+header img {
     height: 14px;
     padding-bottom: 5px;
 }
 
-#menu-header{
+#menu-header {
     display: flex;
 }
 
-#menu-header li, #menu-footer li{
+#menu-header li,
+#menu-footer li {
     list-style-type: none;
-    margin-left : 30px;
+    margin-left: 30px;
 }
 
-#menu-header a, #menu-footer a{
+#menu-header a,
+#menu-footer a {
     text-decoration: none;
     color: black;
     text-transform: uppercase;
 }
 
-/* Modale de contact */
-body {
-    height: 100%;
-    margin: 0;
-    padding: 0;
-    font-family: Arial, Helvetica, sans-serif;
-  }
-  h2 {
-    font-size: 20px;
-    color: #000000;
-  }
-  #example {
-    visibility: hidden;
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    text-align: center;
-    z-index: 1000;
-  }
-  #example div {
-    width: 350px;
-    height: 80px;
-    margin: 100px auto;
-    background-color: #f2f2f2;
-    border-radius: 10px;
-    -webkit-border-radius: 10px;
-    -moz-border-radius: 10px;
-    padding: 15px;
-    text-align: center;
-    font-weight: bold;
-    font-size: 15px;
-    border: 3px solid #cccccc;
-    position: absolute;
-    left: 50%;
-    top: 100px;
-    transform: translate(-50%, -50%);
-    -ms-transform: translate(-50%, -50%);
-    -webkit-transform: translate(-50%, -50%);
-  }
-
-
-
-
-
+/* ----footer--- */
+footer{
+    font-family: "Space Mono";
+    font-weight : 400;
+    font-size : 16px;
+}
 
 #menu-footer {
     display: flex;
     justify-content: center;
 }
 
-#menu-footer a{
+#menu-footer a {
     margin-left: 10px;
     margin-right: 10px;
 }
 
-#menuBtn, .menu-fullscreen, #menuBtnFermeture{
+/* ---Modale de contact--- */
+
+#modale {
+    position:fixed;
+    z-index: 10;
+    height: 850px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    border: 5px solid black;
+    width: 597px;
+    background-color : white;
+    font-family: "Poppins" ;
+    font-weight : 500;
+    font-size : 12px;
+    top: 60px;
+    overflow: auto;
+}
+
+.overlay{
+    background-color : black;
+    opacity : 0.2;
+    position : absolute;
+    z-index : 5;
+    top : 0;
+    left : 0;
+    width : 100%;
+    height : 100%;
+}
+
+.image-contact {
+    object-fit: fill;
+}
+
+.image-contact-mobile {
+    display: none;
+    object-fit: cover;
+}
+
+.placement-modale {
+    display: flex;
+    justify-content: center;
+}
+
+.centrage-contenu-modale {
+    margin-top: 30px;
+    margin-bottom: auto;
+}
+
+/* cases à remplir formulaire */
+.nf-form-content .list-select-wrap .nf-field-element>div,
+.nf-form-content input:not([type="button"]),
+.nf-form-content textarea {
+    background: white;
+    border: 1px solid #c4c4c4;
+    box-shadow: none;
+    color: #787878;
+    transition: all .5s;
+}
+
+.nf-field-label .nf-label-span, .nf-field-label label {
+    font-weight: 500 !important;
+  }
+
+.inactive{
+    display : none;
+}
+
+.active{
+    display : flex;
+}
+
+/* bouton submit formulaire */
+#nf-field-9 {
+    width: 100%;
+    background-color: #D8D8D8;
+    color: #000000;
+    border: none;
+    border-radius: 0px;
+    height : 70px;
+}
+
+.nf-field {
+    display: flex;
+    justify-content: center;
+}
+
+.nf-field .field-wrap {
+    width: 60%;
+}
+
+.nf-field-element .ninja-forms-field.nf-element {
+    border-radius: 10px;
+}
+
+.nf-field-element .ninja-forms-field.nf-element ::after {
+    border-radius: 0px 10px 10px 0px;
+}
+
+.ninja-forms-req-symbol,
+.nf-form-fields-required {
     display: none;
 }
 
-.top-menu{
+#menuBtn,
+.menu-fullscreen,
+#menuBtnFermeture {
+    display: none;
+}
+
+.top-menu {
     margin-left: 10%;
     margin-right: 10%;
     display: flex;
-    justify-content : space-between;
+    justify-content: space-between;
     align-items: center;
     width: 100%;
 }
@@ -112,19 +189,19 @@ body {
 
 
 
-@media screen and (max-width: 780px) {
+@media screen and (max-width: 800px) {
 
-    header{
+    header {
         margin-top: 20px;
         flex-direction: row;
     }
-    
-    .header-mobile{
+
+    .header-mobile {
         display: flex;
         flex-direction: row;
     }
 
-    #menu-header{
+    #menu-header {
         display: none;
     }
 
@@ -133,49 +210,73 @@ body {
         flex-direction: column;
         text-align: center;
     }
+
     #menu-footer li {
         padding-bottom: 15px;
     }
 
-    #menuBtn{
+    #menuBtn {
         display: flex;
     }
 
     /* megamenu */
 
-    .active-mobile{
+    .active-mobile {
         display: flex !important;
     }
 
-    .inactive-mobile{
+    .inactive-mobile {
         display: none !important;
     }
 
-    #megaMenu{
+    #megaMenu {
         display: flex;
         flex-direction: column;
         background-color: #E00000;
         font-size: 44px;
-        width : 100%;
+        width: 100%;
         padding-top: 80px;
         padding-bottom: 80px;
         text-align: center;
         justify-content: center;
     }
-    
-    #megaMenu li{
+
+    #megaMenu li {
         list-style-type: none;
         padding-top: 20px;
     }
-    
-    #megaMenu a{
+
+    #megaMenu a {
         text-decoration: none;
         color: white;
         text-transform: uppercase;
         font-weight: 400;
         text-align: center;
     }
-    .logo{
-        margin : 30px;
+
+    .logo {
+        margin: 30px;
     }
-}
+
+    /* modale */
+    .image-contact-mobile {
+        display: block !important;
+        margin-bottom: 20px;
+    }
+
+    .image-contact {
+        display: none;
+    }
+
+    #modale {
+        width: 286px;
+    }
+
+    .nf-field-container .nf-field-label {
+        margin-bottom: 10px !important;
+        padding: 0;
+        width: 100%;
+        display: flex !important;
+        justify-content: left !important;
+      }
+    }
