@@ -18,10 +18,18 @@
     add_action('after_setup_theme', 'register_my_menus');
 
     //enqueue scripts.js
-function enqueue_custom_script() {
-    wp_enqueue_script('custom-script', get_template_directory_uri() . '/js/menu.js', array('jquery'), '1.0', true);
+function enqueue_menu_script() {
+    wp_enqueue_script('menu-script', get_template_directory_uri() . '/js/menu.js', array('jquery'), '1.0', true);
+
+  }
+  add_action('wp_enqueue_scripts', 'enqueue_menu_script');
+
+
+  function enqueue_custom_script() {
+    wp_enqueue_script('custom-script', get_template_directory_uri() . '/js/scripts.js', array('jquery'), '1.0', true);
+
   }
   add_action('wp_enqueue_scripts', 'enqueue_custom_script');
 
-?>
+
 

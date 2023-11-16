@@ -3,8 +3,8 @@ let megaMenu = document.getElementById('megaMenu');
 let header_mobile = document.getElementById('header');
 let menuBtnFermeture = document.getElementById('menuBtnFermeture')
 
+
 menuBtn.addEventListener('click', () => {
-    console.log('coucou');
     menuBtn.classList.remove('active-mobile');
     menuBtn.classList.add('inactive-mobile');
     megaMenu.classList.remove('inactive-mobile');
@@ -15,7 +15,6 @@ menuBtn.addEventListener('click', () => {
 });
 
 menuBtnFermeture.addEventListener('click', () => {
-    console.log('Fermeture du menu');
     menuBtn.classList.remove('inactive-mobile');
     menuBtn.classList.add('active-mobile');
     megaMenu.classList.remove('active-mobile');
@@ -26,7 +25,3 @@ menuBtnFermeture.addEventListener('click', () => {
 });
 
 
-function example() {
-    el = document.getElementById("example");
-    el.style.visibility = el.style.visibility == "visible" ? "hidden" : "visible";
-    }

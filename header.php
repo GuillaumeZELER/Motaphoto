@@ -4,6 +4,13 @@
     <meta charset="<?php bloginfo('charset'); ?>">
     <title><?php wp_title('|', true, 'right'); ?></title>
     <link rel="stylesheet" href="<?php echo get_stylesheet_uri(); ?>">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet"> 
+
     <?php wp_head(); ?>
 </head>
 <body <?php body_class(); ?>>
@@ -20,19 +27,7 @@
             <img src="./wp-content/themes/Motaphoto/assets/images/menubtn.png" alt="bouton d'ouverture du menu" id="menuBtn" class="mobile" />
             <img src="./wp-content/themes/Motaphoto/assets/images/Croix.png" alt="bouton de fermeture du menu" id="menuBtnFermeture" class="mobile inactive-mobile" />
         </div>
-
-        <!-- MODALE EMPLACEMENT TEMPORAIRE-->
-<!-- 
-    <h2>Créer Boîte Modale</h2>
-    <a href="#" onclick="example()">ouvrir</a>
-    <div id="example">
-      <div>
-        <p>Le contenu que vous souhaitez voir voir va ici.</p>
-        <a href="#" onclick="example()">Cliquez ici pour fermer la boîte</a>
-    </div>
-    </div>
- -->
-</header>
+    </header>
         <!--Menu mobile-->
         <div class="menu-fullscreen inactive-mobile" id="megaMenu">
             <?php 
