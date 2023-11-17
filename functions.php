@@ -33,3 +33,23 @@ function enqueue_menu_script() {
 
 
 
+//fonction d'image random pour le premier bloc de la home page
+function obtenir_image_aleatoire_photo() {
+    $args = array(
+        'post_type'      => 'photo',
+        'posts_per_page' => 1,
+        'orderby'        => 'rand',
+    );
+  
+    $query = new WP_Query($args);
+  
+    if ($query->have_posts()) {
+        $query->the_post();
+        return get_the_post_thumbnail_url();
+    }
+  
+    wp_reset_postdata();
+    return false;
+  }
+
+
