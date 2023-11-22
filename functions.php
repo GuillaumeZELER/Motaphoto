@@ -52,4 +52,29 @@ function obtenir_image_aleatoire_photo() {
     return false;
   }
 
+  function load_more_photos() {
+    $page = $_POST['page'];
 
+    $args = array(
+        'post_type'      => 'photo',
+        'posts_per_page' => 10,
+        'paged'          => $page,
+    );
+
+    $query = new WP_Query($args);
+
+    if ($query->have_posts()) :
+        while ($query->have_posts()) : $query->the_post();
+            // Affichez vos miniatures ici
+            echo('<div class="gallery-img">');
+            the_post_thumbnail('full');
+            echo('</div>');
+        endwhile;
+        wp_reset_postdata();
+    endif;
+
+    die();
+}
+
+add_action('wp_ajax_load_more_photos', 'load_more_photos');
+add_action('wp_ajax_nopriv_load_more_photos', 'load_more_photos');
