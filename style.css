@@ -68,7 +68,6 @@ footer{
 }
 
 /* ---Bannière--- */
-
 .banniere-txt{
     width : 100%;
     position: absolute;
@@ -99,7 +98,6 @@ footer{
 
 
 /* ---Modale de contact--- */
-
 #modale {
     position:fixed;
     z-index: 10;
@@ -216,16 +214,52 @@ footer{
     align-items: center;
     width: 100%;
 }
+/* ---listes déroulantes accueil--- */
+.liste-accueil{
+    display : flex;
+    justify-content: space-between;
+    margin-left : 20px;
+    margin-right : 20px;
+}
+
+.liste-gauche{
+    display : flex;
+    flex-direction : row;
+    justify-content: space-between;
+}
+
+.select{
+    width : 260px;
+    height : 45px;
+    text-align: center;
+    background-color : white;
+    border : 1px solid rgb(169, 169, 169);
+    border-radius : 10px;
+    cursor: pointer;
+}
+
+select:hover{
+    border : 1px solid blue;
+}
+  
+.liste-categories .select  #test:hover {
+    background-color: red !important;
+    color: #fff !important;
+  }
+
+.option-selection {            
+    background-color: red;
+    color: white;
+    border: 1px solid red ;            
+    margin-left: 5px;
+  }
+
+
+#formats{
+    margin-left : 50px;
+}
 
 /* ---Gallerie image accueil--- */
-/* #gallery{
-    display: flex;
-    width : 100%;
-    align-items: center;
-    margin-left: auto;
-    margin-right: auto;
-} */
-
 #gallery-container{
     display: grid;
     grid-template-columns: 1fr 1fr;

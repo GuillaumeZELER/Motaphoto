@@ -6,8 +6,38 @@
     <h1 class="banniere-txt">PHOTOGRAPHIE EVENT</h1>
 </div>
             
-
-
+<div class="liste-accueil">
+    <div class="liste-gauche">
+        <div class="liste-categories liste">
+            <select name="categories" id="categories" class="select">
+                <option value="">Catégories</option>
+                <option id="test" class="option-selection"value="test">TEST 1</option>
+                <option class="option-selection"value="test">TEST 1</option>
+                <option class="option-selection"value="test">TEST 1</option>
+                <option class="option-selection"value="test">TEST 1</option>
+                <option class="option-selection"value="test">TEST 1</option>
+                <option class="option-selection"value="test">TEST 1</option>
+                <option class="option-selection"value="test">TEST 1</option>
+                <option class="option-selection"value="test">TEST 1</option>
+                <option class="option-selection"value="test">TEST 1</option>
+            </select>
+        </div>
+        <div class="liste-formats liste">
+            <select name="formats" id="formats" class="select">
+            <option value="">Formats</option>
+                <option value="test">TEST 2</option>
+            </select>
+        </div>
+    </div>
+    <div class="liste-droite">
+        <div class="liste-trier-par liste">
+            <select name="trier-par" id="trier-par" class="select">
+                <option value="">Trier par</option>
+                <option value="test">TEST 3</option>
+            </select>
+        </div>
+    </div>
+</div>
 
 <div id="gallery">
     <div id="gallery-container">
@@ -33,7 +63,6 @@
         ?>
     </div>
 </div>
-
 
 <script>
 jQuery(function ($) {
