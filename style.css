@@ -118,7 +118,7 @@ footer{
 .overlay{
     background-color : black;
     opacity : 0.2;
-    position : absolute;
+    position : fixed;
     z-index : 5;
     top : 0;
     left : 0;
@@ -247,7 +247,7 @@ select:hover{
     color: #fff !important;
   }
 
-.option-selection {            
+.select:after {            
     background-color: red;
     color: white;
     border: 1px solid red ;            
@@ -275,6 +275,135 @@ select:hover{
     height : 400px;
     padding: 30px;
     object-fit: cover;
+}
+
+/* ---Fiches photos--- */
+.fiche-photo{
+    display : flex;
+    justify-content: space-between;
+    width : 90%;
+    padding-left : 5%;
+    padding-right : 5%;
+}
+
+.photo_informations{
+    display : flex;
+    flex-direction: column;
+    justify-content: end;
+    border-bottom : 1px solid black;
+    width : 50%;
+    text-transform: uppercase;
+}
+
+.photo_img p{
+    width : 100%;
+    height : auto;
+    object-fit: cover;
+}
+
+.zone-contact-et-miniature{
+    display : flex;
+    justify-content: space-between;
+    width : 90%;
+    height : 100px;
+    padding-left : 5%;
+    padding-right : 5%;
+    border-bottom : 1px solid black;
+}
+
+.zone-contact{
+    display : flex;
+    justify-content: left;
+    width : 100%;
+    align-items: center;
+}
+.zone-contact p{
+    max-width : 300px;
+}
+
+.zone-miniature{
+    width : 100%;
+}
+
+
+.bouton-contact{
+    display : flex;
+    justify-content: center;
+    align-items: center;
+    margin-left : 100px;
+}
+
+.bouton-contact a{
+    width : 200px;
+    background-color: #D8D8D8;
+    height : 50px;
+    display : flex;
+    justify-content: center;
+    align-items: center;
+    transition: 0.5s;
+}
+
+.bouton-contact a:hover{
+    background-color: black;
+    color: white;
+    transition: 0.5s;
+}
+
+.zone-miniature{
+    width : 100%;
+    display : flex;
+    justify-content: right;
+}
+
+.presentation-autres-photos{
+    display : flex;
+    flex-direction : column;
+    width: 90%;
+    padding-left: 5%;
+    padding-right: 5%;
+    
+}
+
+.presentation-images{
+    display : flex;
+    justify-content: center;
+    width: 100%;
+    height : auto;
+}
+
+.presentation-images-gauche,
+.presentation-images-droite{
+    width : 100%;
+    padding: 20px;
+}
+
+.presentation-images-gauche img,
+.presentation-images-droite img{
+    width : 100%;
+}
+
+.presentation-bouton{
+    display : flex;
+    width : 100%;
+    justify-content: center;
+}
+
+.presentation-bouton .bouton {
+    width : 300px;
+    background-color: #D8D8D8;
+    height : 50px;
+    display : flex;
+    justify-content: center;
+    align-items: center;
+    margin-top : 30px; 
+    transition: 0.5s;
+}
+
+.presentation-bouton .bouton:hover {
+    background-color: black;
+    color: white;
+    transition: 0.5s;
+    cursor: pointer;
 }
 
 @media screen and (max-width: 800px) {
@@ -386,3 +515,4 @@ select:hover{
     }
     
 }
+

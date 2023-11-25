@@ -31,27 +31,91 @@ overlay.addEventListener('click', () => {
 });
 
 
+// --- Bouton contact dans la fiche des photos---
+
+let popupContactFiche = document.getElementsByClassName('bouton-contact');
+
+popupContactFiche[0].addEventListener('click', () => {
+  overlay.classList.add('active');
+  overlay.classList.remove('inactive');
+  modale.classList.remove('inactive');
+  modale.classList.add('active');
+  placement.classList.remove('inactive');
+  placement.classList.add('active');
+});
 
 
-// couleur hover <options> des balies <select> (pass sur que ça fonctionne)
 
-function choix(event) {
-  var select = event.target; // "select" désigne le menu déroulant sur lequel il y a un chagement... 
-  if (select.selectedIndex === 0) return; // si c'est la première option qui est sélectionnée on ne fait rien...       
+// const inputField = document.querySelector('.chosen-value');
+// const dropdown = document.querySelector('.value-list');
+// const dropdownArray = [... document.querySelectorAll('li')];
 
-  var option_selectionnee = select.selectedOptions[0] // ou : select.options[select.selectedIndex]    
-  option_selectionnee.selected = false; // déselectionne l'option sélectionnée pour suppriimer la surbrillance par défaut...   
+// console.log(typeof dropdownArray)
+// dropdown.classList.add('open');
+// inputField.focus(); // Demo purposes only
+// let valueArray = [];
+// dropdownArray.forEach(item => {
+//   valueArray.push(item.textContent);
+// });
 
-  // Si l'option n'est pas selectionnée (c'est-à-dire si elle n'a pas la class "selectionned") 
-  // alors on l'a sélectionne (c'est-à-dire on lui ajoute la class "selectionned")
-  // Si l'option est déjà selectionnée (c'est-à-dire si elle a la class "selectionned") 
-  // alors on l'a desélectionne (c'est-à-dire on suprime la class "selectionned")
-  option_selectionnee.classList.toggle("selectionned");
+// const closeDropdown = () => {
+//   dropdown.classList.remove('open');
+// }
 
-  // La suite ajoute bêtement à la textarea toutes les options sélectionnées de tous les selects...
-  var str = "";
-  document.querySelectorAll(".selectionned").forEach(element => {
-    str += element.textContent + ",\n";
-  });
-  document.getElementById("myTextarea").value = str;
-}
+// inputField.addEventListener('input', () => {
+//   dropdown.classList.add('open');
+//   let inputValue = inputField.value.toLowerCase();
+//   let valueSubstring;
+//   if (inputValue.length > 0) {
+//     for (let j = 0; j < valueArray.length; j++) {
+//       if (!(inputValue.substring(0, inputValue.length) === valueArray[j].substring(0, inputValue.length).toLowerCase())) {
+//         dropdownArray[j].classList.add('closed');
+//       } else {
+//         dropdownArray[j].classList.remove('closed');
+//       }
+//     }
+//   } else {
+//     for (let i = 0; i < dropdownArray.length; i++) {
+//       dropdownArray[i].classList.remove('closed');
+//     }
+//   }
+// });
+
+// dropdownArray.forEach(item => {
+//   item.addEventListener('click', (evt) => {
+//     inputField.value = item.textContent;
+//     dropdownArray.forEach(dropdown => {
+//       dropdown.classList.add('closed');
+//     });
+//   });
+// })
+
+// inputField.addEventListener('focus', () => {
+//    inputField.placeholder = 'Type to filter';
+//    dropdown.classList.add('open');
+//    dropdownArray.forEach(dropdown => {
+//      dropdown.classList.remove('closed');
+//    });
+// });
+
+// inputField.addEventListener('blur', () => {
+//    inputField.placeholder = 'Select state';
+//   dropdown.classList.remove('open');
+// });
+
+// document.addEventListener('click', (evt) => {
+//   const isDropdown = dropdown.contains(evt.target);
+//   const isInput = inputField.contains(evt.target);
+//   if (!isDropdown && !isInput) {
+//     dropdown.classList.remove('open');
+//   }
+// });
+
+
+//remplissage du formulaire avec la référence
+
+  var champSaisie = document.getElementsByClassName('nf-ref');
+
+  function passerRef(arg){
+    champSaisie[0].value = arg;
+  }
