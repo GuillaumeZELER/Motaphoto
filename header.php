@@ -17,15 +17,15 @@
     <!-- Votre en-tête -->
     <header id="header">
         <div class="top-menu">
-            <img src="./wp-content/themes/Motaphoto/assets/images/Logo.png" class="logo" alt="logo" />
+            <img src="<?php echo get_template_directory_uri() ?>/assets/images/Logo.png" class="logo" alt="logo" />
             <?php 
                 wp_nav_menu(array(
                     'theme_location' => 'header',
                     'menu_id' => 'menu-header', // ID attribué au menu
                 ));
             ?>
-            <img src="./wp-content/themes/Motaphoto/assets/images/menubtn.png" alt="bouton d'ouverture du menu" id="menuBtn" class="mobile" />
-            <img src="./wp-content/themes/Motaphoto/assets/images/Croix.png" alt="bouton de fermeture du menu" id="menuBtnFermeture" class="mobile inactive-mobile" />
+            <img src="<?php echo get_template_directory_uri() ?>/assets/images/menubtn.png" alt="bouton d'ouverture du menu" id="menuBtn" class="mobile" />
+            <img src="<?php echo get_template_directory_uri() ?>/assets/images/Croix.png" alt="bouton de fermeture du menu" id="menuBtnFermeture" class="mobile inactive-mobile" />
         </div>
     </header>
         <!--Menu mobile-->
