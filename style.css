@@ -50,11 +50,17 @@ header img {
     text-transform: uppercase;
 }
 
+.menu-header-container li a:hover,
+.menu-footer-container li a:hover {
+    font-weight: 700;
+}
 /* ----footer--- */
 footer{
     font-family: "Space Mono";
     font-weight : 400;
     font-size : 16px;
+    border-top : 1px solid black;
+    margin-top  : 30px;
 }
 
 #menu-footer {
@@ -126,6 +132,9 @@ footer{
     height : 100%;
 }
 
+form{
+    width : 100%;
+}
 .image-contact {
     object-fit: fill;
 }
@@ -306,8 +315,8 @@ select:hover{
     justify-content: space-between;
     width : 90%;
     height : 100px;
-    padding-left : 5%;
-    padding-right : 5%;
+    margin-left : 5%;
+    margin-right : 5%;
     border-bottom : 1px solid black;
 }
 
@@ -391,6 +400,7 @@ select:hover{
 .presentation-bouton .bouton {
     width : 300px;
     background-color: #D8D8D8;
+    border: 1px solid  #D8D8D8;
     height : 50px;
     display : flex;
     justify-content: center;
@@ -500,8 +510,6 @@ select:hover{
         display: flex !important;
         justify-content: left !important;
       }
-
-      /* ---modale--- */
 
       #banniere-img {
         height: 40vh;
