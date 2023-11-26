@@ -314,10 +314,14 @@ select:hover{
     display : flex;
     justify-content: space-between;
     width : 90%;
-    height : 100px;
+    height : 140px;
     margin-left : 5%;
     margin-right : 5%;
     border-bottom : 1px solid black;
+}
+
+.arrow-left{
+    margin-right: 40%;
 }
 
 .zone-contact{
@@ -334,6 +338,18 @@ select:hover{
     width : 100%;
 }
 
+.get_id{
+    display: none;
+}
+
+.zone-miniature .attachment-thumbnail{
+    height: 80%;
+    width: auto;
+}
+
+.zone-miniature div{
+    text-align: right;
+}
 
 .bouton-contact{
     display : flex;
@@ -389,6 +405,7 @@ select:hover{
 .presentation-images-gauche img,
 .presentation-images-droite img{
     width : 100%;
+    height: auto;
 }
 
 .presentation-bouton{

@@ -37,7 +37,8 @@
             $terms = get_the_terms($post_id, 'categorie');
             if ($terms && !is_wp_error($terms)) {
                 foreach ($terms as $term) {
-                    echo $term->name;
+                    $cat = $term->name;
+                    echo $cat;
                 }
             } else {
                 echo 'Aucune référence définie pour cet article.';
@@ -108,7 +109,30 @@
     </div>
     <div class="zone-miniature">
         <div>
-            <p>Miniature</p>
+            <?php 
+                // Récupérer la miniature du post précédent
+                $prev_custom_post = get_previous_post($postID);
+                $next_custom_post = get_next_post($postID);
+                $next_post_thumbnail = get_the_post_thumbnail($next_custom_post, 'thumbnail');
+
+                // Afficher la miniature
+                echo $next_post_thumbnail;
+            ?>
+            <div class="photo-arrows">
+                <p class="get_id"><?php $postID = the_ID(); ?></p>
+                <?php
+
+                    if ($prev_custom_post) {
+                        $prev_custom_post_link = get_permalink($prev_custom_post);
+                        echo '<a href="' . esc_url($prev_custom_post_link) . '"><img src="'. get_template_directory_uri() . '/assets/images/arrow-left.png" alt="voir la photo précédente" class="arrow-left"/></a>';
+                    }
+
+                    if ($next_custom_post) {
+                        $next_custom_post_link = get_permalink($next_custom_post);
+                        echo '<a href="' . esc_url($next_custom_post_link) . '"><img src="'. get_template_directory_uri() . '/assets/images/arrow-right.png" alt="voir la photo suivante" class="arrow-right"/></a>';
+                    }
+                ?>
+            </div>
         </div>
     </div>
 </div>
@@ -118,12 +142,34 @@
         <p>VOUS AIMEREZ AUSSI</p>
     </div>
     <div class="presentation-images">
-        <div class="presentation-images-gauche">
-            <img src="<?php echo get_template_directory_uri() ?>/assets/images/Photo-header.png" alt="Photo">
-        </div>
-        <div class="presentation-images-droite">
-            <img src="<?php echo get_template_directory_uri() ?>/assets/images/Photo-header.png" alt="Photo">
-        </div>
+        <?php 
+                        $args = array(
+                          'post_type' => 'photo', // Le type de publication personnalisé
+                          'posts_per_page' => 2, // Récupère tous les articles de cette taxonomie
+                          'tax_query' => array(
+                              array(
+                                  'taxonomy' => 'categorie', // Le nom de la taxonomie (dans ce cas, "catégorie").
+                                  'field' => 'slug', // Vous pouvez utiliser 'term_id', 'slug' ou 'name' en fonction de ce que vous avez.
+                                  'terms' => $cat, // Remplacez 'Nom de la catégorie' par le nom de la catégorie que vous recherchez.
+                              ),
+                          ),
+                      );
+                      
+                      $query = new WP_Query($args);
+                      
+                      if ($query->have_posts()) {
+                          while ($query->have_posts()) {
+                            $query->the_post();
+                            $urlrelated = get_the_permalink();
+                            echo("<a href='".$urlrelated."' class='presentation-images-gauche'><div >");
+                              $query->the_post_thumbnail();
+                              the_post_thumbnail(); 
+                              // Le contenu de chaque article ici.
+                            echo("</div></a>");
+                          }
+                          wp_reset_postdata(); // Réinitialise la requête WP_Query.
+                      }
+        ?>
     </div>
     <div class="presentation-bouton">
         <input class="bouton" type="button" value="Toutes les photos">

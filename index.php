@@ -39,6 +39,25 @@
     </div>
 </div>
 
+
+
+<form>
+  <input class="chosen-value" type="text" value="" placeholder="Type to filter">
+  <ul class="value-list">
+    <li>TEST</li>
+    <li>TEST</li>
+    <li>TEST</li>
+    <li>TEST</li>
+    <li>TEST</li>
+    <li>TEST</li>
+    <li>TEST</li>
+    <li>TEST</li>
+    <li>TEST</li>
+  </ul>
+</form>
+
+
+
 <div id="gallery">
     <div id="gallery-container">
         <?php
