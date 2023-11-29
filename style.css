@@ -521,6 +521,11 @@ select:focus>option:checked {
     font-weight: 400;
 }
 
+.photo-informations p{
+    font-family: 'SpaceMono';
+    font-size : 14px;
+}
+
 .photo_img{
     width : 50%;
     /* padding-right : 20px;  

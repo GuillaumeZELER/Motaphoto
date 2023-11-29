@@ -1,12 +1,13 @@
 <?php
 
+    //enqueue css
     function enqueue_my_theme_styles() {
         wp_enqueue_style('my-theme-style', get_stylesheet_uri());
     }
 
     add_action('wp_enqueue_scripts', 'enqueue_my_theme_styles');
     
-// mise en place des menus header et footers
+    // mise en place des menus header et footers
     function register_my_menus() {
         register_nav_menus(
             array(
@@ -17,19 +18,19 @@
     }
     add_action('after_setup_theme', 'register_my_menus');
 
-    //enqueue scripts.js
-function enqueue_menu_script() {
-    wp_enqueue_script('menu-script', get_template_directory_uri() . '/js/menu.js', array('jquery'), '1.0', true);
+    //enqueue script du menu
+    function enqueue_menu_script() {
+        wp_enqueue_script('menu-script', get_template_directory_uri() . '/js/menu.js', array('jquery'), '1.0', true);
+    }
+    add_action('wp_enqueue_scripts', 'enqueue_menu_script');
 
-  }
-  add_action('wp_enqueue_scripts', 'enqueue_menu_script');
 
+    //enqueu script de la modale de contact
+    function enqueue_custom_script() {
+        wp_enqueue_script('custom-script', get_template_directory_uri() . '/js/scripts.js', array('jquery'), '1.0', true);
 
-  function enqueue_custom_script() {
-    wp_enqueue_script('custom-script', get_template_directory_uri() . '/js/scripts.js', array('jquery'), '1.0', true);
-
-  }
-  add_action('wp_enqueue_scripts', 'enqueue_custom_script');
+    }
+    add_action('wp_enqueue_scripts', 'enqueue_custom_script');
 
 
 
@@ -83,7 +84,7 @@ function load_more_photos() {
             'order' => $order,
         );
     }else if($categorie == 'all'){
-        //si on seulement toutes les catégories, on filtre uniquement sur le format
+        //si on veut seulement toutes les catégories, on filtre uniquement sur le format
         $args = array(
             'post_type' => 'photo',
             'posts_per_page' => 12,

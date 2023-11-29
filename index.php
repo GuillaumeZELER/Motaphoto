@@ -9,6 +9,7 @@
 <!-- Sélecteurs de filtres -->
 <div class="filters-box">
     <div class="filters-left">
+        
         <!-- Filtre catégorie -->
         <select id="categorie-select" class="home-filter">
             <option value="all">Catégories</option>
