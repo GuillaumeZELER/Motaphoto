@@ -97,10 +97,10 @@
         </div>
 
 
-        <div class="photo_img inactive-mobile">
+        <div class="photo_img inactive-mobile" id="photo-lightbox">
             <?php
-            // Récupérer le thumbnail (image miniature) lié au custom post type
-            $thumbnail = get_the_post_thumbnail($post_photos, 'large'); // Remplacez 'thumbnail_size' par la taille d'image que vous souhaitez utiliser
+            // thumbnail du cpt
+            $thumbnail = get_the_post_thumbnail($post_photos, 'large'); 
             echo $thumbnail;
             ?>
         </div>
@@ -157,9 +157,9 @@
                           'posts_per_page' => 2, // Récupère tous les articles de cette taxonomie
                           'tax_query' => array(
                               array(
-                                  'taxonomy' => 'categorie', // Le nom de la taxonomie (dans ce cas, "catégorie").
-                                  'field' => 'slug', // Vous pouvez utiliser 'term_id', 'slug' ou 'name' en fonction de ce que vous avez.
-                                  'terms' => $cat, // Remplacez 'Nom de la catégorie' par le nom de la catégorie que vous recherchez.
+                                  'taxonomy' => 'categorie', // récupérer les catégories
+                                  'field' => 'slug', 
+                                  'terms' => $cat, // on veut des images qui ont la même catégorie que notre image en cours
                               ),
                           ),
                       );
@@ -181,7 +181,7 @@
         ?>
     </div>
     <div class="presentation-bouton">
-        <input class="bouton" type="button" value="Toutes les photos">
+        <a href="/MotaPhoto/"><input class="bouton" type="button" value="Toutes les photos"></a>
     </div>
 </div>
 
