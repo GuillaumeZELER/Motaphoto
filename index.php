@@ -6,114 +6,87 @@
     <h1 class="banniere-txt">PHOTOGRAPHIE EVENT</h1>
 </div>
             
-<div class="liste-accueil">
-    <div class="liste-gauche">
-        <div class="liste-categories liste">
-            <select name="categories" id="categories" class="select">
-                <option value="">Catégories</option>
-                <option id="test" class="option-selection"value="test">TEST 1</option>
-                <option class="option-selection"value="test">TEST 1</option>
-                <option class="option-selection"value="test">TEST 1</option>
-                <option class="option-selection"value="test">TEST 1</option>
-                <option class="option-selection"value="test">TEST 1</option>
-                <option class="option-selection"value="test">TEST 1</option>
-                <option class="option-selection"value="test">TEST 1</option>
-                <option class="option-selection"value="test">TEST 1</option>
-                <option class="option-selection"value="test">TEST 1</option>
-            </select>
-        </div>
-        <div class="liste-formats liste">
-            <select name="formats" id="formats" class="select">
-            <option value="">Formats</option>
-                <option value="test">TEST 2</option>
-            </select>
-        </div>
-    </div>
-    <div class="liste-droite">
-        <div class="liste-trier-par liste">
-            <select name="trier-par" id="trier-par" class="select">
-                <option value="">Trier par</option>
-                <option value="test">TEST 3</option>
-            </select>
-        </div>
-    </div>
-</div>
-
-
-
-<form>
-  <input class="chosen-value" type="text" value="" placeholder="Type to filter">
-  <ul class="value-list">
-    <li>TEST</li>
-    <li>TEST</li>
-    <li>TEST</li>
-    <li>TEST</li>
-    <li>TEST</li>
-    <li>TEST</li>
-    <li>TEST</li>
-    <li>TEST</li>
-    <li>TEST</li>
-  </ul>
-</form>
-
-
-
-<div id="gallery">
-    <div id="gallery-container">
-        <?php
-        $args = array(
-            'post_type'      => 'photo',
-            'posts_per_page' => 10, // Nombre de photos à afficher par défaut
-        );
-
-        $query = new WP_Query($args);
-
-        if ($query->have_posts()) :
-            while ($query->have_posts()) : $query->the_post();
-                // Affichez vos miniatures ici
-                echo('<div class="gallery-img">');
-                the_post_thumbnail('large'); // Utilisez la taille de la miniature par défaut
-                echo('</div>');
-            endwhile;
-            wp_reset_postdata();
-        else :
-            echo 'Aucune photo trouvée';
-        endif;
-        ?>
-    </div>
-</div>
-
-<script>
-jQuery(function ($) {
-    var page = 2; // Numéro de page initial
-    var canLoad = true;
-
-    $(window).scroll(function () {
-        if ($(document).height() - $(window).height() <= $(window).scrollTop() + 100 && canLoad) {
-            canLoad = false;
-
-            $.ajax({
-                type: 'POST',
-                url: '<?php echo admin_url('admin-ajax.php'); ?>',
-                data: {
-                    action: 'load_more_photos',
-                    page: page,
-                },
-                success: function (response) {
-                    // Ajoutez le contenu de la nouvelle page à votre conteneur d'affichage
-                    $('#gallery-container').append(response);
-
-                    // Réinitialisez la variable canLoad
-                    canLoad = true;
-
-                    // Incrémentez le numéro de page
-                    page++;
+<!-- Sélecteurs de filtres -->
+<div class="filters-box">
+    <div class="filters-left">
+        <!-- Filtre catégorie -->
+        <select id="categorie-select" class="home-filter">
+            <option value="all">Catégories</option>
+            <?php
+                // Récupérer tous les termes de la taxonomie catégorie
+                $terms = get_terms(array(
+                    'taxonomy' => 'categorie',
+                    'hide_empty' => false,
+                ));
+                // Vérifier s'il y a des termes
+                if ($terms && !is_wp_error($terms)) {
+                    foreach ($terms as $term) {
+                        echo '<option value="' . $term->slug . '">' . $term->name . '</option>';
+                    }
                 }
-            });
-        }
-    });
-});
-</script>
+            ?>
+        </select>
+
+        <!-- Filtre format -->
+        <select id="format-select" class="home-filter">
+            <option value="all">Formats</option>
+            <?php
+                // Récupérer tous les termes de la taxonomie format
+                $terms = get_terms(array(
+                    'taxonomy' => 'format',
+                    'hide_empty' => false,
+                ));
+                // Vérifier s'il y a des termes
+                if ($terms && !is_wp_error($terms)) {
+                    foreach ($terms as $term) {
+                        echo '<option value="' . $term->slug . '">' . $term->name . '</option>';
+                    }
+                }
+            ?>
+        </select>
+    </div>
+
+    <!-- Filtre tri par date -->
+    <select id="order-select" class="home-filter">
+        <option value="ASC">Trier par</option>
+        <option value="ASC">Date - Ordre croissant</option>
+        <option value="DESC">Date - Ordre décroissant</option>
+    </select>
+</div>
+
+<!-- Liste des images -->
+<div id="photos-container">
+    <?php
+
+    //création des arguments pour la requette
+    $args = array(
+        'post_type' => 'photo', //post type photo
+        'posts_per_page' => 12, //12 photos par défaut
+        'paged' => 1, //par défaut on charge la page 1
+        'order' => 'ASC', //par défaut on charge les dates croissantes
+    );
+
+    $query = new WP_Query($args); //envoi de la requette avec nos arguments
+
+    if ($query->have_posts()) : //si la requette retourne des photos
+        while ($query->have_posts()) : $query->the_post(); //tant qu'on a des photos, on les affiche une par une
+            $urlrelated = get_the_permalink(); //on récupère l'url de la photo
+            echo '<div class="photos-container-image survol-photo">';
+            echo("<a href='".$urlrelated."'>"); //on créer un lien vers le template photo
+            echo get_the_post_thumbnail(); //on affiche la thumbnail de la photo
+            echo '</a></div>';
+        endwhile;
+        wp_reset_postdata();
+    else :
+        echo 'Pas de photos trouvées<br/>'; //si on ne trouve pas de photos, message d'erreur
+    endif;
+    ?>
+</div>
+
+<!-- Bouton "Charger plus" -->
+<div class="load-more-photos-box">
+    <button id="load-more-photos">Charger plus</button>
+</div>
 
 
 <?php get_footer(); ?>
